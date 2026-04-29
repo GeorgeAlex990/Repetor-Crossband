@@ -1,8 +1,3 @@
-## Page 1
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
-
 # Repetor Crossband VHF-UHF
 Proiect de comunicatii radio portabil bazat pe ESP32 si module SA818
 
@@ -29,17 +24,6 @@ Obiective specifice:
 ## 4. Descriere Generala
 Repetorul crossband este realizat in jurul a doua module RF de tip SA818, controlate de un microcontroller ESP32. Alegerea arhitecturii crossband (VHF in, UHF out si invers) elimina necesitatea unui duplexor RF de inalta performanta si reduce semnificativ interferenta intre canalul de receptie si cel de emisie.
 ESP32 asigura controlul complet al modulelor radio prin interfata UART, gestioneaza logica de repetare (detectie squelch, activare PTT), gazduieste un server web local pentru configurare si afiseaza telemetria in timp real.
-
-&lt;page_number&gt;Pagina 1 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 2
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
-
 Dispozitivul poate fi alimentat de la orice sursa disponibila: baterie interna reincarcabila, sursa externa 5–12V sau panou solar, ceea ce il face ideal pentru functionare autonoma.
 
 ## 5. Componenta Hardware
@@ -144,58 +128,14 @@ Filtrul diplexor este componenta cheie care permite conectarea ambelor module SA
 ### 6.1 Metodologie de proiectare
 
 Filtrul a fost calculat si simulat cu ajutorul programului RFSIM99, care permite modelarea si analiza comportarii circuitelor RF pasive. Structura adoptata consta in alaturarea a doua filtre independente:
-
-&lt;page_number&gt;Pagina 2 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 3
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
-
 *   Filtru trece-jos (LPF) cu 5 poli Butterworth – pentru banda VHF (≤ 200 MHz), asigura trecerea semnalelor VHF si rejectia celor UHF
 *   Filtru trece-sus (HPF) cu 5 poli Butterworth – pentru banda UHF (≥ 300 MHz), asigura trecerea semnalelor UHF si rejectia celor VHF
 
 Frecventele de taiere au fost alese astfel incat banda de trecere sa prezinte atenuare minima, iar banda de rejectie sa prezinte atenuare maxima, asigurand izolare suficienta intre porturile VHF si UHF.
 
-&lt;img&gt;LPF and HPF circuit diagrams&lt;/img&gt;
-Fig 1. Schema LPF si HPF
-
-&lt;img&gt;Simulation results for LPF and HPF filters&lt;/img&gt;
-Fig 2. Simulari caracteristicilor filtrelor LPF si HPF
-
 ## 6.2 Constructie
 
 Componentele filtrului (bobine si condensatoare) au fost dimensionate pe baza tabelelor Butterworth si verificate prin masuratori cu analizorul de retea NanoVNA. Montajul a fost realizat pe o placa de circuit imprimat dedicata, cu atentie la minimizarea inductantelor si capacitatorilor parazite.
-
-&lt;img&gt;Measured frequency response of LPF and HPF filters on a NanoVNA&lt;/img&gt;
-Fig 3. Caracteristicile amplitudine-frecventa pentru LPF si HPF
-
-&lt;page_number&gt;Pagina 3 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 4
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
-
-&lt;img&gt;Repetor Crossband VHF-UHF schematic diagram&lt;/img&gt;
-
-Fig 4. Schema electrica a repetorului
-
-&lt;page_number&gt;Pagina 4 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 5
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
 
 # 7. Schema Bloc si Electrica
 
@@ -209,9 +149,6 @@ Schema electrica completa a fost realizata in EasyEDA si include:
 
 Schema contine de asemenea circuite de conditionare a semnalului audio (reteaua RLC pentru AF), circuitul de generare ton CTCSS si etajele de amplificare/atenuare MIC/AF pentru adaptarea nivelurilor de semnal intre modulele SA818.
 
-&lt;img&gt;Montaj repetor&lt;/img&gt;
-Fig 5. Montaj repetor
-
 # 8. Componenta Software
 
 ## 8.1 Arhitectura firmware
@@ -219,17 +156,6 @@ Fig 5. Montaj repetor
 Firmware-ul ESP32 este scris in C++ si ruleaza sub framework-ul Arduino/ESP-IDF. Acesta implementeaza urmatoarele functionalitati principale:
 *   Initializarea si configurarea modulelor SA818 la pornire (frecvente, squelch, CTCSS, putere)
 *   Loop-ul ce asigura functia de repetor: detectia squelch activ pe unul dintre module si activarea PTT pe modulul opus
-
-&lt;page_number&gt;Pagina 5 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 6
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
-
 *   Server web local (Wi-Fi AP sau STA) pentru configurare parametri si vizualizare telemetrie
 *   Monitorizarea tensiunii bateriei prin ADC si transmiterea valorii catre interfata web
 *   Generare ton de identificare 1kHz direct pe GPIO 25 prin DAC-ul intern al ESP32, fara modul audio extern
@@ -297,16 +223,6 @@ Performanta este limitata in principal de puterea de iesire a modulelor SA818 (1
 ### 9.3 Consum energetic si autonomie
 
 Consumul total al sistemului in modul de asteptare (fara emisie activa) este de aproximativ 200–300 mA la 5V (inclusiv ESP32, OLED si modulele SA818 in modul RX). In emisie activa (un canal TX), consumul creste la aproximativ 600–800 mA. Cu o baterie LiPo de 3000 mAh, autonomia estimata in utilizare normala (ciclu 30% TX / 70% RX) depaseste 8 ore.
-
-&lt;page_number&gt;Pagina 6 din 7&lt;/page_number&gt;
-
----
-
-
-## Page 7
-
-Repetor Crossband VHF-UHF
-George Alexandru Reuca
 
 # 10. Comparare cu Alte Solutii
 
@@ -380,5 +296,3 @@ Directii de dezvoltare ulterioare:
 * Integrarea unui GPS pentru transmitere pozitie (APRS)
 * Adaugarea unui modul LoRa pentru comunicatie de date de lunga distanta
 * Implementarea unui protocol de comanda la distanta prin DTMF sau radio
-
-&lt;page_number&gt;Pagina 7 din 7&lt;/page_number&gt;
