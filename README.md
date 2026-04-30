@@ -149,6 +149,9 @@ Schema electrica completa a fost realizata in EasyEDA si include:
 
 Schema contine de asemenea circuite de conditionare a semnalului audio (reteaua RLC pentru AF), circuitul de generare ton CTCSS si etajele de amplificare/atenuare MIC/AF pentru adaptarea nivelurilor de semnal intre modulele SA818.
 
+![image](Poze/Schematic_repeterC2_2026-04-14.png)
+
+
 # 8. Componenta Software
 
 ## 8.1 Arhitectura firmware
